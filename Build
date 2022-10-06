@@ -1,0 +1,23 @@
+#!/bin/bash
+
+function echo_verbose() {
+    if [[ "$1" < "$VARSITY_BUILD_VEROSITY" ]]; then
+        echo hello
+        echo -e $2
+        echo world
+    fi
+}
+
+UNITY_VERSION=`cat ProjectSettings/ProjectVersion.txt | head -1 | awk '{print $2}'`
+UNITY_APP=/Applications/Unity/Hub/Editor/$UNITY_VERSION/Unity.app/Contents/MacOS/Unity
+
+echo Building... Start
+
+echo 1 "Using Unity.app = $UNITY_APP"
+
+$UNITY_APP -batchmode -executeMethod Varsity.Builder.Build -logFile - -logFile log.txt
+
+
+
+echo Building... Done
+
