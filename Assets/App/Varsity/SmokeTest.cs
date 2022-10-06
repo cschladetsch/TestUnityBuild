@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 
-public class SmokeTest : MonoBehaviour
-{
+public class SmokeTest : MonoBehaviour {
     public int NumSteps;
 
     void Awake() {
@@ -18,11 +17,12 @@ public class SmokeTest : MonoBehaviour
 
     void Update() {
         if (Time.frameCount > NumSteps) {
-            UnityEngine.Application.Quit(0);
             DestroyImmediate(gameObject);
+            UnityEngine.Application.Quit(0);
 	    }
 
-        Debug.Log(string.Format("{0}", Time.frameCount));
+        Debug.Log(string.Format("Frame #{0}", Time.frameCount));
+        System.Console.WriteLine(Time.frameCount);
     }
 }
 
